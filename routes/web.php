@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Task;
+use App\Http\Livewire\EditModal;
+use App\Http\Livewire\Addmenu;
+use App\Http\Livewire\EditExtension;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/task',Task::class)->middleware(['auth'])->name('task');
+
+Route::get('/editmenu',EditExtension::class)->middleware(['auth'])->name('editmenu');
+
+Route::get('/addmenu',Addmenu::class)->middleware(['auth'])->name('addmenu');
+
+
+require __DIR__.'/auth.php';

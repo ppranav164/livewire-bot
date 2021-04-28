@@ -61,4 +61,5 @@ class menu_spotlight extends SpotlightCommand
     {
         $spotlight->redirectRoute('teams.users.create', $team);
     }
+    
 }

@@ -21,6 +21,7 @@ class Task extends ModalComponent
     public $selectedRows;
     public $selectrow;
     public $rowid = [];
+    public $products = [];
 
     protected $listeners = ['taskcomponent' => '$refresh'];
 
@@ -46,9 +47,17 @@ class Task extends ModalComponent
 
     public function showMenuModuleList()
     {
-        return helpme_module::leftJoin('bot_menu_items','helpme_module.menu_id','=','bot_menu_items.id')
+        $row = helpme_module::leftJoin('bot_menu_items','helpme_module.menu_id','=','bot_menu_items.id')
         ->select('helpme_module.*', 'bot_menu_items.menu_name')
         ->get();
+        
+        foreach($row as $product)
+        {
+            $this->products[] = $product->product_id;
+            $this->products[] = $product->product_id;
+        }
+
+        return $row;
     }
 
 

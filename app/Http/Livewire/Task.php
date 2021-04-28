@@ -22,7 +22,7 @@ class Task extends ModalComponent
     public $selectedRows;
     public $selectrow;
     public $rowid = [];
-    public $products = [];
+    public $products;
     public $items = [];
 
     protected $listeners = ['taskcomponent' => '$refresh'];
@@ -55,9 +55,14 @@ class Task extends ModalComponent
 
         foreach($row as $product)
         {
-            $this->products[] = $product->product_id;
+            $product_id = [1,2];
+            $product_ids = json_decode($product->product_id);
+            $item = products::whereIn('id',$product_id)->get();
 
-            $item = 
+            foreach($item as $item)
+            {
+                $this->products =  $product_ids;
+            }
         }
 
         return $row;

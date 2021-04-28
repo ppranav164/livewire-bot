@@ -114,8 +114,5 @@
  
 </div>
 
-@foreach($products as $items)
 
-  {{ $items }}
-
-@endforeach
+{{ $products }}

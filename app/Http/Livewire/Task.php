@@ -58,7 +58,7 @@ class Task extends ModalComponent
             $product_id = [1,2];
             $product_ids = json_decode($product->product_id);
             $item = products::whereIn('id',$product_id)->get();
-
+            
             foreach($item as $item)
             {
                 $this->products =  $product_ids;

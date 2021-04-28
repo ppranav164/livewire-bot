@@ -31,8 +31,11 @@
        <div class="relative">
         <select wire:model="parent_menu" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
           <option value="0">None</option>
-          <option>DJ</option>
-          <option>Audio Production</option>
+
+          @foreach($menu_option as $menu)
+          <option value="{{ $menu->id }}"> {{ $menu->menu_name }} </option>
+          @endforeach
+
         </select>
       </div>
 

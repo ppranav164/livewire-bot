@@ -7,7 +7,7 @@ use LivewireUI\Modal\ModalComponent;
 
 use App\Models\helpme_module;
 use App\Models\bot_menu_items;
-
+use Illuminate\Support\Collection;
 
 class Task extends ModalComponent
 {
@@ -16,8 +16,11 @@ class Task extends ModalComponent
     public $message;
     public $header;
     public $modules;
-
     public $ids;
+    public $checked;
+    public $selectedRows;
+    public $selectrow;
+    public $rowid = [];
 
     protected $listeners = ['taskcomponent' => '$refresh'];
 
@@ -33,6 +36,8 @@ class Task extends ModalComponent
         $this->modules = $this->showMenuModuleList();
         return view('livewire.task');
     }
+
+    
     
     public function reload()
     {
@@ -51,6 +56,22 @@ class Task extends ModalComponent
      {
          $helpMeExtenion =  helpme_module::where('id',$id);
          $helpMeExtenion->delete();
+     }
+
+
+     public function rowselection($id)
+     {
+        
+       
+     }
+
+
+     public function deleteselection()
+     {
+        $selectedID = $this->rowid;
+
+        $extension = helpme_module::whereIn('id',$selectedID);
+        $extension->delete();
      }
 
 

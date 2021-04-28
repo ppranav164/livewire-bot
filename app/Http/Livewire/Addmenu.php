@@ -11,13 +11,14 @@ use App\Models\bot_menu_items;
 class Addmenu extends ModalComponent
 {
 
-    public $menuItems;
+    public $menuItems,$menu_option;
     public $parent_menu;
     public $menu_name;
     public $products = "";
     public $screen = 0;
     public $status = 1;
     public $title;
+
 
     protected $rules = [
         'title' => 'required|min:6',
@@ -32,6 +33,7 @@ class Addmenu extends ModalComponent
 
     public function getMenus()
     {
+        $this->menu_option = bot_menu_items::where('is_main',1)->get();
         return bot_menu_items::all();
     }
 

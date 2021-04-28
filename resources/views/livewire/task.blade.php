@@ -2,6 +2,11 @@
 
 <div class="container mx-auto mt-20">
 
+<button wire:click="$emit('openModal', 'robot')"  class="mr-5 float-right bg-green-500 hover:bg-white text-white-700 hover:text-green font-semibold text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">
+  Preview
+</button>
+
+
 <button wire:click="$emit('openModal', 'createmenu')" class="mr-5 float-right bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
   Create New Menu
 </button>
@@ -10,13 +15,15 @@
   Add New
 </button>
 
-<button class="mr-5 float-right bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+<button wire:click="deleteselection" class="mr-5 float-right bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
   Delete
 </button>
 
  {{ $ids }}
 
-  <h1 class="text-gray-500 py-3">Helpme Robot Module</h1>
+  <h1 class="text-gray-500 py-3">Helpme Robot Module : 
+  
+   </h1> 
 <div class="flex flex-col mt-10">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -26,9 +33,8 @@
             <tr>
             
                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <input type="checkbox" class="rounded">
+                <input wire:click="$toggle('checked')" type="checkbox" class="rounded">
               </th>
-
 
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Module Name
@@ -61,7 +67,7 @@
             <tr>
 
               <td class="px-6 py-4 whitespace-nowrap">
-               <input type="checkbox" class="rounded">
+               <input wire:model="rowid" value="{{ $module->id  }}"  type="checkbox" class="rounded" {{ $checked ? 'checked' : '' }} >
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap">
@@ -81,7 +87,7 @@
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-500">{{ $module->title }}</div>
+                <div class="text-sm text-gray-500">{{ str_limit($module->title,50) }}</div>
               </td>
 
              

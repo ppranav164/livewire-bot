@@ -11,7 +11,7 @@ use App\Models\bot_menu_items;
 class EditExtension extends ModalComponent
 {
 
-    public $menuItems;
+    public $menuItems,$menu_option;
     public $parent_menu;
     public $menu_name;
     public $products = "";
@@ -44,6 +44,7 @@ class EditExtension extends ModalComponent
     
     public function getMenus()
     {
+        $this->menu_option = bot_menu_items::where('is_main',1)->get();
         return bot_menu_items::all();
     }
 
@@ -71,5 +72,6 @@ class EditExtension extends ModalComponent
         $this->editData = $helpmeEtension;
         return $helpmeEtension;
     }
+    
     
 }

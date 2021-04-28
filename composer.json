@@ -10,6 +10,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
+        "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.5",
         "livewire-ui/modal": "^0.1.2",
         "livewire/livewire": "^2.4"

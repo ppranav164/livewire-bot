@@ -31,7 +31,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
 
                 <div class="w-full flex  py-1 mr-20 ml-10">
-                  <input class="rounded border border-blue-500 text-center" type="text" placeholder="Search (Press '/' ) ">
+                  <input @click="$dispatch('toggle-spotlight')" class="rounded border border-blue-500 text-center" type="text" placeholder="Search (Press Command + K or '/' ) ">
                 </div>
                 
                 <x-dropdown align="right" width="48">

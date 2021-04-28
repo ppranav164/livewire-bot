@@ -46,5 +46,6 @@
         </div>
 
         @livewireScripts
+        @livewire('livewire-ui-spotlight')
     </body>
 </html>

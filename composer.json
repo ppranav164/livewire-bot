@@ -13,6 +13,7 @@
         "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.5",
         "livewire-ui/modal": "^0.1.2",
+        "livewire-ui/spotlight": "dev-php-7.4-support",
         "livewire/livewire": "^2.4"
     },
     "require-dev": {

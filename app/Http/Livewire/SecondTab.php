@@ -10,8 +10,8 @@ use App\Models\bot_menu_items as menus;
 
 class SecondTab extends ModalComponent
 {
-    public $menu_id,$name,$options,$chosen,$option_id;
-
+    
+    public $menu_id,$name,$options,$chosen,$option_id,$selected;
 
     public function render()
     {
@@ -35,6 +35,7 @@ class SecondTab extends ModalComponent
     
     public function chosenMenu($menuID)
     {
+        $this->selected = 1;
         $menus = menus::where('id',$menuID)->first();
         $this->option_id = $menuID;
         $this->chosen = $menus->menu_name;

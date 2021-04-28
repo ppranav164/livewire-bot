@@ -14,7 +14,7 @@
 
 
   <div class="px-5 py-5 float-right">
-   <button wire:click="$emit('openModal','second-tab',{{ json_encode(['id' => $option_id ]) }})"   class=" text-green-500 hover:bg-green-500 hover:text-white px-3 rounded py-2 border border-green-500"> 
+   <button {{ $selected ? '' : 'disabled' }} wire:click="$emit('openModal','second-tab',{{ json_encode(['id' => $option_id ]) }})"   class="disabled:opacity-50 text-green-500 hover:bg-green-500 hover:text-white px-3 rounded py-2 border border-green-500"> 
    Next
    </button>
   </div>

@@ -15,5 +15,6 @@ return [
 
     'welcome' => 'Hello There, I am DJ-DeeBee How can I help you?',
     'sub_message' => 'Do you want to DJ or Record Music?',
+    'empty_option' => 'Sorry! there is no option available at the moment',
 
 ];

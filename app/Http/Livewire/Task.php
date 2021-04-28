@@ -7,6 +7,7 @@ use LivewireUI\Modal\ModalComponent;
 
 use App\Models\helpme_module;
 use App\Models\bot_menu_items;
+use App\Models\products;
 use Illuminate\Support\Collection;
 
 class Task extends ModalComponent
@@ -22,6 +23,7 @@ class Task extends ModalComponent
     public $selectrow;
     public $rowid = [];
     public $products = [];
+    public $items = [];
 
     protected $listeners = ['taskcomponent' => '$refresh'];
 
@@ -50,11 +52,12 @@ class Task extends ModalComponent
         $row = helpme_module::leftJoin('bot_menu_items','helpme_module.menu_id','=','bot_menu_items.id')
         ->select('helpme_module.*', 'bot_menu_items.menu_name')
         ->get();
-        
+
         foreach($row as $product)
         {
             $this->products[] = $product->product_id;
-            $this->products[] = $product->product_id;
+
+            $item = 
         }
 
         return $row;

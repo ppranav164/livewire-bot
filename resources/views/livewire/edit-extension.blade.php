@@ -1,7 +1,7 @@
 <div>
  <div class="container px-5 py-10">
 
-  <h1>Edit Menu - {{ $extID }} {{ $editData }} </h1>
+  <h1>Edit Menu - {{ $extID }} {{ $editData->menu_id }} </h1>
 
  <form class="w-full">
 
@@ -12,10 +12,10 @@
          Select Menu
        </label>
        <div class="relative">
-        <select wire:model="menu_name" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        <select wire:model="menu_name" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" >
           
           @foreach($menuItems as $menu)
-           <option  value="{{ $menu->id }}">{{ $menu->menu_name }} </option>
+           <option value="{{ $menu->id }}"> {{ $menu->menu_name }}  </option>
           @endforeach
 
         </select>
@@ -31,7 +31,6 @@
        <div class="relative">
         <select wire:model="parent_menu" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
           <option value="0">None</option>
-
           @foreach($menu_option as $menu)
           <option value="{{ $menu->id }}"> {{ $menu->menu_name }} </option>
           @endforeach
@@ -49,7 +48,7 @@
       <div class="relative mt-5">
       <textarea wire:model="title" rows="5" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
       </div>
-       @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
+       @error('title') <span class="text-red-500"></span> @enderror
      </div>
 
 
@@ -66,6 +65,7 @@
 
        <div class="relative">
          <select multiple wire:model="products" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          <option value="0">None</option>
           @foreach($itemproducts as $product)
           <option selected value="{{ $product->id }}"> {{ $product->product_name }} </option>
           @endforeach

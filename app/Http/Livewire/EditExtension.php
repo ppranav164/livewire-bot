@@ -33,6 +33,7 @@ class EditExtension extends ModalComponent
     public function mount($id)
     {
         $this->extID = $id;
+        $this->editData = $this->editInfo();
     }
 
 
@@ -40,7 +41,6 @@ class EditExtension extends ModalComponent
     {
         $this->itemproducts = $this->getProducts();
         $this->menuItems = $this->getMenus();
-        $this->editData = $this->editInfo();
         return view('livewire.edit-extension');
     }
 
@@ -112,7 +112,12 @@ class EditExtension extends ModalComponent
 
     public function editInfo()
     {
-        return helpme_module::find($this->extID)->first();
+        $row = helpme_module::where('id',$this->extID)->first();
+        $this->menu_name = $row->menu_id;
+        $this->parent_menu = $row->belongs_to;
+        $this->title = $row->title;
+        $this->products = json_decode($row->product_id);
+        return $row;
     }
     
     public function getProducts()

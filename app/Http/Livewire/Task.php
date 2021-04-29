@@ -30,6 +30,8 @@ class Task extends ModalComponent
 
     public function mount()
     {
+       
+
         $this->message = 'Hello World!';
         $this->header = 'Hello World!';
     }
@@ -37,6 +39,14 @@ class Task extends ModalComponent
 
     public function render()
     {
+        if($this->checked)
+        {
+            $this->rowid = [69,71];
+        }else {
+
+            $this->rowid = [];
+        }
+       
         $this->modules = $this->showMenuModuleList();
         return view('livewire.task');
     }

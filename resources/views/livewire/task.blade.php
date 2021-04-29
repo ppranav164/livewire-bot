@@ -2,7 +2,7 @@
 
 <div class="container mx-auto mt-20">
 
-<button wire:click="$emit('openModal', 'robot')"  class="mr-5 float-right bg-green-500 hover:bg-white text-white-700 hover:text-green font-semibold text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">
+<button wire:click="$emit('openModal', 'robot')"  class="mr-5 float-right bg-green-500 hover:bg-white text-white-700 hover:text-green-500 font-semibold text-white py-2 px-4 border border-green-500 hover:border-green-500 rounded">
   Preview
 </button>
 

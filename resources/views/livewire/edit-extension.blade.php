@@ -1,7 +1,7 @@
 <div>
  <div class="container px-5 py-10">
 
-  <h1>Edit Menu - {{ $extID }} </h1>
+  <h1>Edit Menu - {{ $extID }} {{ $editData }} </h1>
 
  <form class="w-full">
 
@@ -15,7 +15,7 @@
         <select wire:model="menu_name" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
           
           @foreach($menuItems as $menu)
-          <option value="{{ $menu->id }}">{{ $menu->menu_name }}</option>
+           <option  value="{{ $menu->id }}">{{ $menu->menu_name }} </option>
           @endforeach
 
         </select>
@@ -65,13 +65,12 @@
        </div>
 
        <div class="relative">
-        <select multiple wire:model="products" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-        <option value="1">Pioneer DJ DDJ 200</option>
-        <option value="2">Pioneer DJ DDJ 400</option>
-        <option value="3">Audio Technica ATH-M20x Professional Studio Headphones</option>
-        <option value="4">Behringer - UMC204HD-Audio Interface</option>
-        </select>
-      </div>
+         <select multiple wire:model="products" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+          @foreach($itemproducts as $product)
+          <option selected value="{{ $product->id }}"> {{ $product->product_name }} </option>
+          @endforeach
+         </select>
+       </div>
 
      </div>
 
@@ -101,3 +100,5 @@
 </form>
  </div>
 </div>
+
+

@@ -20,7 +20,7 @@ class Addmenu extends ModalComponent
     public $screen = 0;
     public $status = 1;
     public $title;
-
+    public $itemproducts;
 
     protected $rules = [
         'title' => 'required|min:6',
@@ -29,6 +29,7 @@ class Addmenu extends ModalComponent
     
     public function render()
     {
+        $this->itemproducts = $this->getProducts();
         $this->menuItems = $this->getMenus();
         return view('livewire.addmenu');
     }
@@ -99,5 +100,9 @@ class Addmenu extends ModalComponent
     }
 
 
+    public function getProducts()
+    {
+        return products::where('status',1)->get();
+    }
 
 }

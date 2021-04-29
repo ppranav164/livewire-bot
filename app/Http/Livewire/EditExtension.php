@@ -7,6 +7,7 @@ use LivewireUI\Modal\ModalComponent;
 use App\Models\helpme_module;
 use App\Models\bot_menu_items;
 use App\Models\products;
+use App\Models\product_options;
 
 
 class EditExtension extends ModalComponent
@@ -19,10 +20,10 @@ class EditExtension extends ModalComponent
     public $screen = 0;
     public $status = 1;
     public $title;
-
     public $extID;
-
     public $editData;
+    public $product_options;
+    public $itemproducts;
 
     protected $rules = [
         'title' => 'required|min:6',
@@ -37,8 +38,9 @@ class EditExtension extends ModalComponent
 
     public function render()
     {
+        $this->itemproducts = $this->getProducts();
         $this->menuItems = $this->getMenus();
-        $this->editInfo();
+        $this->editData = $this->editInfo();
         return view('livewire.edit-extension');
     }
 
@@ -110,10 +112,12 @@ class EditExtension extends ModalComponent
 
     public function editInfo()
     {
-        $helpmeEtension =  helpme_module::find($this->extID)->first();
-        $this->editData = $helpmeEtension;
-        return $helpmeEtension;
+        return helpme_module::find($this->extID)->first();
     }
     
+    public function getProducts()
+    {
+        return products::where('status',1)->get();
+    }
     
 }

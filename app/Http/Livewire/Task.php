@@ -8,6 +8,7 @@ use LivewireUI\Modal\ModalComponent;
 use App\Models\helpme_module;
 use App\Models\bot_menu_items;
 use App\Models\products;
+use App\Models\product_options;
 use Illuminate\Support\Collection;
 
 class Task extends ModalComponent
@@ -53,15 +54,10 @@ class Task extends ModalComponent
         ->select('helpme_module.*', 'bot_menu_items.menu_name')
         ->get();
 
-        foreach($row as $product)
-        {
-            $product_id = [1,2];
-            $item = products::whereIn('id',$product_id)->get();
-
-           
-        }
-
+        $this->products = $row;
+      
         return $row;
+
     }
 
 
@@ -69,6 +65,8 @@ class Task extends ModalComponent
      {
          $helpMeExtenion =  helpme_module::where('id',$id);
          $helpMeExtenion->delete();
+
+         $this->deleteProducts($id);
      }
 
 
@@ -82,9 +80,17 @@ class Task extends ModalComponent
      public function deleteselection()
      {
         $selectedID = $this->rowid;
-
         $extension = helpme_module::whereIn('id',$selectedID);
         $extension->delete();
+        $this->deleteProducts($selectedID);
+     }
+
+     //Delete the product options
+     
+     public function deleteProducts($id)
+     {
+         $product_options = product_options::whereIn('menu_id',$id);
+         $product_options->delete();
      }
 
 

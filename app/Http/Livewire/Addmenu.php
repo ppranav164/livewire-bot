@@ -6,6 +6,7 @@ use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 use App\Models\helpme_module;
 use App\Models\bot_menu_items;
+use App\Models\product_options;
 
 
 class Addmenu extends ModalComponent
@@ -50,8 +51,26 @@ class Addmenu extends ModalComponent
         $helpmeEtension->status =  $this->status;
         $helpmeEtension->save();
 
+        $menu_id = $helpmeEtension->id;
+
+        foreach($this->products as $product_id)
+        {
+            $this->product_options($menu_id,$product_id);
+        }
+
         $this->emitTo('task', 'taskcomponent');
         $this->closeModal();
+
     }
+
+    public function product_options($menu_id,$product_id)
+    {
+        $products = new product_options();
+        $products->menu_id = $menu_id;
+        $products->product_id = $product_id;
+        $products->save();
+    }
+
+
 
 }

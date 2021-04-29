@@ -10,6 +10,8 @@ use App\Models\bot_menu_items;
 use App\Models\products;
 use App\Models\product_options;
 use Illuminate\Support\Collection;
+use PDF;
+use App;
 
 class Task extends ModalComponent
 {
@@ -30,8 +32,6 @@ class Task extends ModalComponent
 
     public function mount()
     {
-       
-
         $this->message = 'Hello World!';
         $this->header = 'Hello World!';
     }
@@ -101,6 +101,13 @@ class Task extends ModalComponent
      {
          $product_options = product_options::whereIn('menu_id',$id);
          $product_options->delete();
+     }
+
+
+     public function print()
+     {
+        $pdf = PDF::loadView('livewire.pdfviewer');
+        return $pdf->download('pdf_file.pdf');
      }
 
 

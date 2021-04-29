@@ -19,7 +19,7 @@
   Delete
 </button>
 
- {{ $ids }}
+
 
   <h1 class="text-gray-500 py-3">Helpme Robot Module : 
   
@@ -95,6 +95,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
               <button wire:click="$emit('openModal', 'edit-extension' ,{{ json_encode(['id' => $module->id ]) }} )" class="text-indigo-600 hover:text-indigo-900">Edit</button>
               <button wire:click="deletemodule({{ $module->id }})" class="text-red-600 hover:text-red-900">Delete</button>
+              <button wire:click="print" class="text-red-600 hover:text-red-900">Print</button>
               </td>
 
             </tr>

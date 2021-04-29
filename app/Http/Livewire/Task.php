@@ -21,12 +21,14 @@ class Task extends ModalComponent
     public $header;
     public $modules;
     public $ids;
-    public $checked;
+    public $checked,$ischecked;
     public $selectedRows;
     public $selectrow;
     public $rowid = [];
     public $products;
     public $items = [];
+
+    public $module_ids = [];
 
     protected $listeners = ['taskcomponent' => '$refresh'];
 
@@ -38,17 +40,21 @@ class Task extends ModalComponent
 
 
     public function render()
+    {  
+        $this->modules = $this->showMenuModuleList();
+        return view('livewire.task');
+    }
+
+
+    public function selectAll()
     {
-        if($this->checked)
+        if($this->ischecked)
         {
-            $this->rowid = [69,71];
+            $this->rowid = $this->module_ids;
         }else {
 
             $this->rowid = [];
         }
-       
-        $this->modules = $this->showMenuModuleList();
-        return view('livewire.task');
     }
 
     
@@ -65,7 +71,12 @@ class Task extends ModalComponent
         ->get();
 
         $this->products = $row;
-      
+
+        foreach ($row as $key) {
+            
+            $this->module_ids = $key->id;
+        }
+
         return $row;
 
     }

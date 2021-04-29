@@ -21,7 +21,7 @@
 
 
 
-  <h1 class="text-gray-500 py-3">Helpme Robot Module : 
+  <h1 class="text-gray-500 py-3">Helpme Robot Module :  {{ $ids }}
   
    </h1> 
 <div class="flex flex-col mt-10">
@@ -33,7 +33,7 @@
             <tr>
             
                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <input wire:click="$toggle('checked')" type="checkbox" class="rounded">
+                <input wire:model="ischecked" wire:click="selectAll" value="{{ $checked }}" type="checkbox" class="rounded">
               </th>
 
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -67,7 +67,7 @@
             <tr>
 
               <td class="px-6 py-4 whitespace-nowrap">
-               <input wire:model="rowid" value="{{ $module->id  }}"  type="checkbox" class="rounded" {{ $checked ? 'checked' : '' }} >
+               <input wire:model="rowid"  value="{{ $module->id  }}"  type="checkbox" class="rounded" {{ $checked ? 'checked' : '' }} >
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap">

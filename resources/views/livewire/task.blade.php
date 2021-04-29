@@ -21,7 +21,7 @@
 
 
 
-  <h1 class="text-gray-500 py-3">Helpme Robot Module :  {{ $ids }}
+  <h1 class="text-gray-500 py-3">Helpme Robot Module
   
    </h1> 
 <div class="flex flex-col mt-10">

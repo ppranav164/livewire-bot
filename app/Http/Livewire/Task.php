@@ -56,7 +56,6 @@ class Task extends ModalComponent
             $this->rowid = [];
         }
     }
-
     
     
     public function reload()
